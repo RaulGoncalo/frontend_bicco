@@ -1,11 +1,12 @@
 import React from 'react';
 import { createStackNavigator, HeaderTitle } from '@react-navigation/stack';
 
-import Preload from '../screens/Preload'
-import SignIn from '../screens/SignIn'
-import SignUp from '../screens/SignUp'
+import Preload from '../screens/Preload';
+import SignIn from '../screens/SignIn';
+import SignUp from '../screens/SignUp';
 import Forget from '../screens/ForgetPassword';
 import Register from '../screens/CompleteRegister'; 
+import ResetePassword from '../screens/ResetPassword';
 import AddBicco from '../screens/AddBicco'; 
 import MainTab from '../stacks/MainTab';
 
@@ -67,6 +68,17 @@ export default () => {
                 } 
                 component = {Register}
             />
+
+            <Stack.Screen 
+                name = "ResetePassword" 
+                options = {
+                    {
+                        headerShown : false,
+                    }
+                } 
+                component = {ResetePassword}
+            />
+
             <Stack.Screen 
                 name = "AddBicco" 
                 options = {

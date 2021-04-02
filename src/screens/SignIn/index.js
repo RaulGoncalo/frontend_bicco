@@ -18,7 +18,7 @@ import { Container,
 
 import { UserContext } from '../../contexts/UserContext'
 import Api from '../../Api';
-import SignInput from '../../components/SignInput';
+import Input from '../../components/Input';
 import StatusBar from '../../components/StatusBar';
 
 
@@ -112,7 +112,7 @@ export default () => {
             <SubTitulo>Entre com seu login</SubTitulo>
             
             <InputArea>
-                <SignInput 
+                <Input 
                     placeholder = "E-mail"
                     value = {email}
                     onChangeText = { t => {
@@ -123,7 +123,7 @@ export default () => {
                     errorMessage = {errorEmail}
                 />
             
-                <SignInput  
+                <Input  
                     placeholder = "Senha"
                     value = {password}
                     onChangeText = { t => {

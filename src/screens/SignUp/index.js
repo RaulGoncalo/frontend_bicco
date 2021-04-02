@@ -13,12 +13,11 @@ import {
 } from './styles';
 
 import { UserContext } from '../../contexts/UserContext'    
-import SignInput from '../../components/SignInput'
+import Input from '../../components/Input'
 import Api from '../../Api';
 import { Alert } from 'react-native';
 import StatusBar from "../../components/StatusBar";
 import IconExit from '../../assets/fi-rr-arrow-small-left.svg';
-import { set } from 'react-native-reanimated';
 
 export default () => {
 
@@ -116,7 +115,7 @@ export default () => {
             <InputArea>
                 <SubTitulo>Preencha os campos abaixo:</SubTitulo>
                 
-                <SignInput 
+                <Input 
                     placeholder = "Nome e Sobrenome"
                     value = {name}
                     onChangeText = { t => {
@@ -126,7 +125,7 @@ export default () => {
                     }}
                     errorMessage = {errorName}
                 />
-                <SignInput 
+                <Input 
                     placeholder = "E-mail"
                     value = {email}
                     onChangeText = { t => {
@@ -136,7 +135,7 @@ export default () => {
                     keyboardType = {"email-address"}
                     errorMessage = {errorEmail}
                 />
-                <SignInput  
+                <Input  
                     placeholder = "Senha"
                     value = {password}
                     onChangeText = { t => {
@@ -147,7 +146,7 @@ export default () => {
                     maxLength = {8}
                     errorMessage = {errorPassword}
                 />
-                <SignInput  
+                <Input  
                     placeholder = "Confirmar senha"
                     value = {confirmatioPassword}
                     onChangeText = { t => {

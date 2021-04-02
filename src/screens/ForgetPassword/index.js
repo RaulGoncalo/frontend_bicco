@@ -10,7 +10,7 @@ import { Container,
 import {useNavigation} from '@react-navigation/native';
 import Api from '../../Api';
 
-import SignInput from '../../components/SignInput'
+import Input from '../../components/Input'
 import StatusBar from '../../components/StatusBar'
 
 export default () => {
@@ -40,7 +40,7 @@ export default () => {
             <InputArea>
                 <SubTitulo>Enviaremos uma nova senha temporária em seu e-mail:</SubTitulo>
                 
-                <SignInput 
+                <Input 
                     placeholder = "E-mail"
                     value = {emailField}
                     onChangeText = { t => setEmailField(t)}

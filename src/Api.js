@@ -81,4 +81,17 @@ export default {
         const json = await req.json();
         return json;
     },
+
+    updatePassword: async(updatePassword) => {
+        const req = await fetch(`${BASE_API}/updatePassword`, {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-type': 'application/json',
+            },
+            body: JSON.stringify({updatePassword})
+        })
+        const json = await req.json();
+        return json;
+    },
 }
