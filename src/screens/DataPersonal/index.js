@@ -127,6 +127,7 @@ export default ({navigation, route}) => {
                             format: 'DD/MM/YYYY'
                         }}
                         value = {user.date}
+<<<<<<< HEAD:src/screens/DataPersonal/index.js
                         onChangeText = { date => {
                             setUser({...user, date})
                             setErrorDate(null)
@@ -135,6 +136,12 @@ export default ({navigation, route}) => {
                         ref = {(ref) => dateField = ref}
                     />
                     <Text style={styles.errorMessage}>{errorDate}</Text>
+=======
+                        onChangeText = { date => setUser({...user, date})}
+                        style={styles.inputMask}
+                    />
+                    <Text style={styles.errorMessage}></Text>
+>>>>>>> 2be06eb071dbee07f3e561e4011084a756eb747c:src/screens/CompleteRegister/index.js
                     
                     <TextInputMask
                         type={'cel-phone'}
@@ -144,6 +151,7 @@ export default ({navigation, route}) => {
                             dddMask: '(99) '
                         }}
                         value={user.phone}
+<<<<<<< HEAD:src/screens/DataPersonal/index.js
                         onChangeText = { phone => {
                             setUser({...user, phone})
                             setErrorPhone(null)
@@ -160,6 +168,27 @@ export default ({navigation, route}) => {
                     <Cards IconSvg = {Redo} text ="Dados residenciais" route = 'RegisterAddress'/>
                     <Cards IconSvg = {Redo} text ="Senha" route = 'ResetePassword'/>
                 </AreaCards>
+=======
+                        onChangeText = { phone => setUser({...user, phone})}
+                        placeholder = {"Telefone com DDD"}
+                        placeholderTextColor = '#9C98A6'
+                        style={styles.inputMask}
+                    />
+                    <Text style={styles.errorMessage}></Text>
+
+                    <Input
+                        placeholder = "URL do Perfil"
+                        value = {user.avatar}
+                        onChangeText = { avatar => setUser({...user, avatar})}
+                    />     
+                </CardArea>
+                
+                <AreaCards>
+                    <Cards IconSvg = {Redo} text ="Dados residenciais"/>
+                    <Cards IconSvg = {Redo} text ="Senha"/>
+                </AreaCards>
+
+>>>>>>> 2be06eb071dbee07f3e561e4011084a756eb747c:src/screens/CompleteRegister/index.js
                 <CustomButton onPress = {handleRegisterClick}>
                         <CustomButtonText >
                             Salvar
@@ -189,10 +218,16 @@ const styles = StyleSheet.create({
     },
     errorMessage: {
         alignSelf: "flex-start",
+<<<<<<< HEAD:src/screens/DataPersonal/index.js
         marginLeft: 10,
         color: "red",
         fontSize: 10,
         fontFamily: "Poppins-Regular",
         marginBottom: 5,
+=======
+        marginLeft: 15,
+        color: "#f00",
+        fontSize: 12
+>>>>>>> 2be06eb071dbee07f3e561e4011084a756eb747c:src/screens/CompleteRegister/index.js
     }
 })

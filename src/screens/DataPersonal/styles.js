@@ -76,8 +76,16 @@ export const LoadingIcon = styled.ActivityIndicator`
 `;
 
 export const AreaCards = styled.View`
+<<<<<<< HEAD:src/screens/DataPersonal/styles.js
     flex:1;
     width: 100%;
     justify-content: center;
     align-items: center;
+=======
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+>>>>>>> 2be06eb071dbee07f3e561e4011084a756eb747c:src/screens/CompleteRegister/styles.js
 `;

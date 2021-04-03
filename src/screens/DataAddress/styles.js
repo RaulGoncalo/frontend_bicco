@@ -6,7 +6,10 @@ export const Container = styled.SafeAreaView`
     flex: 1;
     padding-left: 20px;
     padding-right: 20px;
+<<<<<<< HEAD
     background-color: #E5E5E5;
+=======
+>>>>>>> 2be06eb071dbee07f3e561e4011084a756eb747c
 `;
 export const Titulo = styled.Text`
     font-family: 'Poppins-Bold';
@@ -69,3 +72,13 @@ export const LoadingIcon = styled.ActivityIndicator`
     margin-top: 50px;
 `;
 
+<<<<<<< HEAD
+=======
+export const AreaCards = styled.View`
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+`;
+>>>>>>> 2be06eb071dbee07f3e561e4011084a756eb747c
