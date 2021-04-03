@@ -17,7 +17,7 @@ const TextErro = styled.Text`
     font-size: 10px;
     color: red;
     margin-left:10px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 `;
 
 export default ({placeholder, value, onChangeText, password, maxLength, keyboardType, errorMessage}) => {

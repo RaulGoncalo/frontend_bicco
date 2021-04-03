@@ -4,8 +4,8 @@ import {useNavigation} from '@react-navigation/native';
 
 const Area = styled.TouchableOpacity`
     flex-direction: row;
-    background-color: #fff;
     width: 100%;
+    background-color: #fff;
     height : 50px;
     justify-content: space-between;
     align-items: center;

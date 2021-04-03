@@ -60,10 +60,15 @@ export default () => {
                                 routes: [{name: 'MainTab'}]
                             });
                         }else{
-                            Alert.alert("Error:", res.error, [{
-                                text : "Ok"
-                            }]);
-
+                            if(res){
+                                Alert.alert("Error:", res.error, [{
+                                    text : "Ok"
+                                }]);
+                            }else{
+                                Alert.alert("Error:", "Problema ao efetuar login", [{
+                                    text : "Ok"
+                                }]);
+                            }
                             navigation.reset({
                                 routes: [{name: 'SignIn'}]
                             });

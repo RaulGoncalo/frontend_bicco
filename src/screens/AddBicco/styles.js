@@ -6,6 +6,7 @@ export const Container = styled.SafeAreaView`
     flex: 1;
     padding-left: 20px;
     padding-right: 20px;
+    background-color: #E5E5E5;
 `;
 export const Titulo = styled.Text`
     font-family: 'Poppins-Bold';

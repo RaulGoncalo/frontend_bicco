@@ -48,7 +48,7 @@ export default {
     },
 
     newpassword: async(email) => {
-        const req = await fetch(`${BASE_API}/newpassword`, {
+        const req = await fetch(`${BASE_API}/newPassword`, {
             method: 'POST',
             headers: {
                 Accept: 'application/json',

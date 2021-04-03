@@ -32,7 +32,7 @@ export default () => {
                     <TextHome texto = "Meus Biccos:"/>
                 </TextArea>
                 <AreaScroller>
-                <CardsBicco name = 'Raul' work = 'Pedreiro'  value = '200' />
+                    <CardsBicco name = 'Raul' work = 'Pedreiro'  value = '200' />
                     <CardsBicco name = 'Bianca' work = 'Professora de ingles'  value = '350'/>
                     <CardsBicco name = 'Bianca' work = 'Professora de ingles'  value = '350'/>
                     <CardsBicco name = 'Bianca' work = 'Professora de ingles'  value = '350'/>

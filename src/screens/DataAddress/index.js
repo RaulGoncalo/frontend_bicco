@@ -1,4 +1,4 @@
-import React, {useState}from 'react';
+import React, {useState, useContext}from 'react';
 
 import {
     Container, 
@@ -9,16 +9,17 @@ import {
     Scroller, 
     CustomButton, 
     CustomButtonText,
-    Titulo,
 } from './styles';
 
 import IconExit from '../../assets/fi-rr-arrow-small-left.svg';
+import { UserContext } from '../../contexts/UserContext';
 import Input from '../../components/Input';
 import Api from '../../Api';
 import {Alert} from 'react-native';
 
 
-export default ({navigation}) => {
+export default ({navigation, route}) => {
+    const { dispatch: userDispatch } = useContext(UserContext);
 
     const [newPassword, setNewPassWord] = useState('');
     const [confirmatioNewPassword, setConfirmationNewPassWord] = useState('');
@@ -32,8 +33,8 @@ export default ({navigation}) => {
             setErrorConfirmationNewPassWord(null)
             if(newPassword == confirmatioNewPassword){
                 if(validatePassWord()){
-                    res = await Api.updatePassword(newPassword)
-                    if(res.success){
+                    upadatePassword = await Api.updatePassword(newPassword)
+                    if(upadatePassword.success){
                         Alert.alert("Sucesso", "Senha atualizada", [{
                             text : "Ok"
                         }]);
@@ -42,7 +43,7 @@ export default ({navigation}) => {
                             routes: [{name: 'Home'}]
                         })
                     }else{
-                        Alert.alert("Error", res.error, [{
+                        Alert.alert("Error", upadatePassword.error, [{
                             text : "Ok"
                         }]);
                     }
@@ -66,41 +67,59 @@ export default ({navigation}) => {
                 <Header onPress = {() => navigation.navigate('Register')}>
                     <IconExit width = "30" height = "30px" fill = "#6A6180"/>
                     <TituloHeader>Voltar</TituloHeader>
+
                 </Header>
-                <Titulo>A senha deve conter pelo menos:</Titulo>
-                <TituloLigth>
-                    * 1 letra minúscula;
-                    {"\n"}
-                    * 1 letra maiúscula;
-                    {"\n"}
-                    * 1 caractere especial;
-                    {"\n"}
-                    * 1 número
-                </TituloLigth>
                 <CardArea>
                     <TituloLigth>Redefinir senha:</TituloLigth>
+                    <CardArea>
+                    <TituloLigth>Dados Residenciais:</TituloLigth>
                     <Input 
-                        placeholder = "Nova senha"
-                        value = {newPassword}
-                        onChangeText = { t => {
-                            setNewPassWord(t)
-                            setErrorNewPassWord(null)
-                        }}
-                        password = {true}
-                        maxLength = {8}
-                        errorMessage = {errorNewPassword}
+                        placeholder = "Cep"
+                        value = {user.cep}
+                        onChangeText = { cep => 
+                            setUser({...user, cep})
+                        }
+                        keyboardType = {"numeric"}
+                    />
+                    <Input 
+                        placeholder = "Rua"
+                        value = {user.street}
+                        onChangeText = { street => 
+                            setUser({...user, street})
+                        }
                     />
                     <Input
-                         placeholder = "Confirmar nova senha"
-                         value = {confirmatioNewPassword}
-                         onChangeText = { t => {
-                            setConfirmationNewPassWord(t)
-                            setErrorConfirmationNewPassWord(null)
-                         }}
-                         password = {true}
-                         maxLength = {8}
-                         errorMessage = {errorConfirmatioNewPassword}
+                        placeholder = "Numero"
+                        value = {user.number}
+                        onChangeText = { number => 
+                            setUser({...user, number})
+                        }
+                        keyboardType = {"numeric"}
                     />
+                    <Input
+                        placeholder = "Bairro"
+                        value = {user.district}
+                        onChangeText = { district => 
+                            setUser({...user, district})
+                        }
+                        
+                    />
+                    <Input
+                        placeholder = "Cidade"
+                        value = {user.city}
+                        onChangeText = { city => 
+                            setUser({...user, city})
+                        }
+                    />
+                    <Input
+                        placeholder = "Estado"
+                        value = {user.state}
+                        onChangeText = { state => 
+                            setUser({...user, state})
+                        }
+                        maxLength = {2}
+                    /> 
+                </CardArea>
                 </CardArea>
                 <CustomButton onPress = {handleRegisterClick}>
                     <CustomButtonText >

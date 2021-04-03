@@ -4,6 +4,9 @@ import styled from 'styled-components/native';
 
 export const Container = styled.SafeAreaView`
     flex: 1;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: #E5E5E5;
 `;
 
 export const TextArea = styled.View`
@@ -16,11 +19,10 @@ export const TextArea = styled.View`
 `;
 
 export const AreaCards = styled.View`
+    flex:1;
     width: 100%;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    padding-left: 20px;
-    padding-right: 20px;
 `;
 
 export const AreaScroller = styled.View`

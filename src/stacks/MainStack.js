@@ -5,7 +5,8 @@ import Preload from '../screens/Preload';
 import SignIn from '../screens/SignIn';
 import SignUp from '../screens/SignUp';
 import Forget from '../screens/ForgetPassword';
-import Register from '../screens/CompleteRegister'; 
+import Register from '../screens/DataPersonal'; 
+import RegisterAddress from '../screens/DataAddress';
 import ResetePassword from '../screens/ResetPassword';
 import AddBicco from '../screens/AddBicco'; 
 import MainTab from '../stacks/MainTab';
@@ -35,17 +36,7 @@ export default () => {
 
             <Stack.Screen 
                 name = "Forget" 
-                options = {
-                    {
-                        title : "Recuperar senha", 
-                        headerTintColor: '#3F3D56', 
-                        headerTitleStyle: {
-                                fontFamily: "Poppins-bold",
-                                fontSize:20,
-                                fontWeight: 'bold'
-                            }
-                        }
-                    } 
+                options = {{headerShown : false}} 
                 component = {Forget}
             />
             
@@ -77,6 +68,16 @@ export default () => {
                     }
                 } 
                 component = {ResetePassword}
+            />
+
+            <Stack.Screen 
+                name = "RegisterAddress" 
+                options = {
+                    {
+                        headerShown : false,
+                    }
+                } 
+                component = {RegisterAddress}
             />
 
             <Stack.Screen 

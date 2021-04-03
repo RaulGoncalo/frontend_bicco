@@ -1,4 +1,4 @@
-import React, {useState, useContext}from 'react';
+import React, {useState, useContext, useEffect}from 'react';
 
 import {
     Container, 
@@ -7,18 +7,22 @@ import {
     TituloHeader, 
     TituloLigth, 
     CardArea, 
-    Scroller, 
     CustomButton, 
     CustomButtonText,
     AreaHeader,
+    AreaCards,
 } from './styles';
 
 import IconExit from '../../assets/fi-rr-arrow-small-left.svg';
-import NewPass from '../../assets/fi-rr-arrow-small-right.svg';
+import { TextInputMask } from 'react-native-masked-text';
+
 import { UserContext } from '../../contexts/UserContext';
 import Input from '../../components/Input';
 import Api from '../../Api';
-import {Alert} from 'react-native';
+import {Alert, StyleSheet, Text} from 'react-native';
+
+import Cards from '../../components/CardStrained';
+import Redo from '../../assets/fi-rr-redo.svg';
 
 
 export default ({navigation, route}) => {
@@ -28,12 +32,18 @@ export default ({navigation, route}) => {
     //card dados pessoais
     const [errorName, setErrorName] = useState('');
     const [errorEmail, setErrorEmail] = useState('');
+    const [errorDate, setErrorDate] = useState('');
+    const [errorPhone, setErrorPhone] = useState('');
+    
+    let dateField = null
+    let phoneField = null
 
     const handleRegisterClick = async () => {
         setErrorName(null)
         setErrorEmail(null)
-       if(user.name != '' && user.email != '' ){
-            if(validateEmail(user.email)){
+        setErrorDate(null)
+        setErrorPhone(null)
+       if(user.name != '' && validateEmail(user.email) && dateField.isValid() && phoneField.isValid()){
                 let res = await Api.register(user)
                 if(res.success){
                     userDispatch({
@@ -58,32 +68,30 @@ export default ({navigation, route}) => {
                         routes: [{name: 'Home'}]
                     })
                 } 
-            }else{
-                setErrorEmail("Digite um email válido")
-            }
         }else{
             if(user.name == '')
                 setErrorName("Preencha seu nome")
-            if(user.email == '')
-                setErrorEmail("Preencha seu email")
-        }
+            if(!validateEmail(user.email))
+            setErrorEmail("Digite um email válido")
+            if(!dateField.isValid())
+                setErrorDate("Digite uma data válida")
+            if(!phoneField.isValid())
+                setErrorPhone("Digite uma telefone válido")
+        }  
     }
 
     function validateEmail(email) {
         const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(String(email).toLowerCase());
     }
+
+    
     return(
-        <Container>
-            <Scroller vertical={true} showsVerticalScrollIndicator= {false}>
+        <Container vertical={true} showsVerticalScrollIndicator= {false}>
                 <AreaHeader>
                     <Header onPress = {() => navigation.navigate('Home')}>
                         <IconExit width = "30" height = "30px" fill = "#6A6180"/>
                         <TituloHeader>Voltar</TituloHeader>
-                    </Header>
-                    <Header onPress = {() => navigation.navigate('ResetePassword')}>
-                        <TituloHeader>Senha</TituloHeader>
-                        <NewPass width = "30" height = "30px" fill = "#6A6180"/>
                     </Header>
                 </AreaHeader>
                 {
@@ -111,80 +119,80 @@ export default ({navigation, route}) => {
                         errorMessage = {errorEmail}
                         keyboardType = {"email-address"}
                     />
-                    <Input
+                    <TextInputMask
                         placeholder = "Data de Nascimento"
+                        placeholderTextColor = '#9C98A6'
+                        type={'datetime'}
+                        options={{
+                            format: 'DD/MM/YYYY'
+                        }}
                         value = {user.date}
-                        onChangeText = { date => setUser({...user, date})}
-                        keyboardType = {"numeric"}
+                        onChangeText = { date => {
+                            setUser({...user, date})
+                            setErrorDate(null)
+                        }}
+                        style={styles.inputMask}
+                        ref = {(ref) => dateField = ref}
                     />
-                    <Input
-                        placeholder = "Telefone com DDD"
-                        value = {user.phone}
-                        onChangeText = { phone => setUser({...user, phone})}
-                        keyboardType = {"numeric"}
-
+                    <Text style={styles.errorMessage}>{errorDate}</Text>
+                    
+                    <TextInputMask
+                        type={'cel-phone'}
+                        options={{
+                            maskType: 'BRL',
+                            withDDD: true,
+                            dddMask: '(99) '
+                        }}
+                        value={user.phone}
+                        onChangeText = { phone => {
+                            setUser({...user, phone})
+                            setErrorPhone(null)
+                        }}
+                        placeholder = {"Telefone com DDD"}
+                        placeholderTextColor = '#9C98A6'
+                        style={styles.inputMask}
+                        ref = {(ref) => phoneField = ref}
                     />
-                    <Input
-                        placeholder = "URL do Perfil"
-                        value = {user.avatar}
-                        onChangeText = { avatar => setUser({...user, avatar})}
-                    />     
+                    <Text style={styles.errorMessage}>{errorPhone}</Text>    
                 </CardArea>
-                <CardArea>
-                    <TituloLigth>Dados Residenciais:</TituloLigth>
-                    <Input 
-                        placeholder = "Cep"
-                        value = {user.cep}
-                        onChangeText = { cep => 
-                            setUser({...user, cep})
-                        }
-                        keyboardType = {"numeric"}
-                    />
-                    <Input 
-                        placeholder = "Rua"
-                        value = {user.street}
-                        onChangeText = { street => 
-                            setUser({...user, street})
-                        }
-                    />
-                    <Input
-                        placeholder = "Numero"
-                        value = {user.number}
-                        onChangeText = { number => 
-                            setUser({...user, number})
-                        }
-                        keyboardType = {"numeric"}
-                    />
-                    <Input
-                        placeholder = "Bairro"
-                        value = {user.district}
-                        onChangeText = { district => 
-                            setUser({...user, district})
-                        }
-                        
-                    />
-                    <Input
-                        placeholder = "Cidade"
-                        value = {user.city}
-                        onChangeText = { city => 
-                            setUser({...user, city})
-                        }
-                    />
-                    <Input
-                        placeholder = "Estado"
-                        value = {user.state}
-                        onChangeText = { state => 
-                            setUser({...user, state})
-                        }
-                        maxLength = {2}
-                    /> 
-                </CardArea>
+                <TituloLigth>Atualize também:</TituloLigth>     
+                <AreaCards>
+                    <Cards IconSvg = {Redo} text ="Dados residenciais" route = 'RegisterAddress'/>
+                    <Cards IconSvg = {Redo} text ="Senha" route = 'ResetePassword'/>
+                </AreaCards>
                 <CustomButton onPress = {handleRegisterClick}>
-                    <CustomButtonText >
-                        Salvar
-                    </CustomButtonText>
-                </CustomButton>    
-            </Scroller>           
+                        <CustomButtonText >
+                            Salvar
+                        </CustomButtonText>
+                </CustomButton>
         </Container>
     )
 }
+
+const styles = StyleSheet.create({
+    containerMask : {
+        flex: 1,
+        flexDirection: 'row',
+      },
+    inputMask: {
+        height: 55,
+        width: '100%',
+        padding: 10,
+        fontSize: 14,
+        borderRadius: 8,
+        borderColor: "#3F3D56",
+        borderWidth: 1,
+        borderStyle: "solid",
+        alignSelf: "flex-start",
+        fontFamily: 'Poppins-Regular',
+        color: "#3F3D56",
+    },
+    errorMessage: {
+        alignSelf: "flex-start",
+        marginLeft: 10,
+        color: "red",
+        fontSize: 10,
+        fontFamily: "Poppins-Regular",
+        marginBottom: 5,
+    }
+})

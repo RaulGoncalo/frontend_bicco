@@ -3,9 +3,25 @@ import styled from 'styled-components/native'
 
 export const Container = styled.SafeAreaView`
     flex: 1;
-    padding: 30px;
+    padding: 20px;
     align-items: flex-start;
     justify-content: flex-start; 
+    background-color: #E5E5E5;
+`;
+
+export const Header = styled.TouchableOpacity`
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: row;
+    width: 30%;
+`;
+
+export const TituloHeader = styled.Text`
+    font-family: 'Poppins-Bold';
+    font-size: 20px;
+    color: #6A6180;
+    margin-bottom:20px;
+    margin-left: 10px;
 `;
 
 export const SubTitulo = styled.Text`

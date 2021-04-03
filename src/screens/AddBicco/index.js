@@ -13,8 +13,7 @@ import {
 } from './styles';
 
 import IconExit from '../../assets/fi-rr-arrow-small-left.svg';
-import Input from '../../components/RegisterInput';
-import DesInput from '../../components/DescInput';
+import Input from '../../components/Input';
 
 export default ({navigation}) => {
     return(
@@ -40,7 +39,7 @@ export default ({navigation}) => {
                     placeholder = "Local de atendimento"
                     />
                     
-                    <DesInput
+                    <Input
                         placeholder = "Descrição"
                     />     
                 </CardArea>

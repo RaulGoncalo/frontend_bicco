@@ -2,14 +2,13 @@ import React from 'react';
 import styled from 'styled-components/native';
 
 import AccontProfile from '../assets/fi-rr-user.svg';
-import Redo from '../assets/fi-rr-redo.svg';
 
 import Info from '../assets/fi-rr-exclamation.svg';
 
 const Area = styled.View`
     flex-direction: row;
     background-color: #fff;
-    width: 360px;
+    width: 100%;
     justify-content: space-between;
     border-radius: 20px;
     padding: 12px;
