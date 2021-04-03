@@ -1,6 +1,22 @@
 import React from 'react';
 import styled from 'styled-components/native';
 
+export const Header = styled.TouchableOpacity`
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+`;
+
+export const TituloHeader = styled.Text`
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins-Bold';
+    font-size: 20px;
+    color: #6A6180;
+    margin-right: 15px;
+`;
 
 export const Container = styled.SafeAreaView`
     flex: 1;
@@ -11,7 +27,6 @@ export const TextArea = styled.View`
     justify-content: flex-start;
     align-items: flex-start;
     margin-bottom:15px;
-    margin-top:15px;
 `;
 
 export const CardHome = styled.View`

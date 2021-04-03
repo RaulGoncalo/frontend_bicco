@@ -1,5 +1,4 @@
 import React from 'react';
-import symbolicateStackTrace from 'react-native/Libraries/Core/Devtools/symbolicateStackTrace';
 import styled from 'styled-components/native';
 
 
@@ -51,20 +50,12 @@ export const CustomButtonText = styled.Text`
 `;
 
 export const TituloHeader = styled.Text`
-    flex: 1;
     font-family: 'Poppins-Bold';
     font-size: 18px;
     color: #6A6180;
     margin-bottom:5px;
     margin-left: 10px;
 `;
-
-export const AreaHeader = styled.View`
-    flex-direction: row;
-    justify-content: space-between;
-    margin-bottom: 20px;
-`;
-
 export const Header = styled.TouchableOpacity`
     margin-top: 20px;
     justify-content: flex-start;
@@ -75,4 +66,12 @@ export const Header = styled.TouchableOpacity`
 
 export const LoadingIcon = styled.ActivityIndicator`
     margin-top: 50px;
+`;
+
+export const AreaCards = styled.View`
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
 `;

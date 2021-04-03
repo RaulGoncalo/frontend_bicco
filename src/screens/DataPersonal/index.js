@@ -11,14 +11,19 @@ import {
     CustomButton, 
     CustomButtonText,
     AreaHeader,
+    AreaCards,
 } from './styles';
 
 import IconExit from '../../assets/fi-rr-arrow-small-left.svg';
-import NewPass from '../../assets/fi-rr-arrow-small-right.svg';
+import { TextInputMask } from 'react-native-masked-text';
+
 import { UserContext } from '../../contexts/UserContext';
 import Input from '../../components/Input';
 import Api from '../../Api';
-import {Alert} from 'react-native';
+import {Alert, StyleSheet, Text} from 'react-native';
+
+import Cards from '../../components/CardStrained';
+import Redo from '../../assets/fi-rr-redo.svg';
 
 
 export default ({navigation, route}) => {
@@ -81,10 +86,6 @@ export default ({navigation, route}) => {
                         <IconExit width = "30" height = "30px" fill = "#6A6180"/>
                         <TituloHeader>Voltar</TituloHeader>
                     </Header>
-                    <Header onPress = {() => navigation.navigate('ResetePassword')}>
-                        <TituloHeader>Senha</TituloHeader>
-                        <NewPass width = "30" height = "30px" fill = "#6A6180"/>
-                    </Header>
                 </AreaHeader>
                 {
                     user.avatar == null ? <Titulo>Finalize seu cadastro:</Titulo> : <Titulo>Altere seus dados:</Titulo>
@@ -111,74 +112,46 @@ export default ({navigation, route}) => {
                         errorMessage = {errorEmail}
                         keyboardType = {"email-address"}
                     />
-                    <Input
+                    <TextInputMask
                         placeholder = "Data de Nascimento"
+                        placeholderTextColor = '#9C98A6'
+                        type={'datetime'}
+                        options={{
+                            format: 'DD/MM/YYYY'
+                        }}
                         value = {user.date}
                         onChangeText = { date => setUser({...user, date})}
-                        keyboardType = {"numeric"}
+                        style={styles.inputMask}
                     />
-                    <Input
-                        placeholder = "Telefone com DDD"
-                        value = {user.phone}
+                    <Text style={styles.errorMessage}></Text>
+                    
+                    <TextInputMask
+                        type={'cel-phone'}
+                        options={{
+                            maskType: 'BRL',
+                            withDDD: true,
+                            dddMask: '(99) '
+                        }}
+                        value={user.phone}
                         onChangeText = { phone => setUser({...user, phone})}
-                        keyboardType = {"numeric"}
-
+                        placeholder = {"Telefone com DDD"}
+                        placeholderTextColor = '#9C98A6'
+                        style={styles.inputMask}
                     />
+                    <Text style={styles.errorMessage}></Text>
+
                     <Input
                         placeholder = "URL do Perfil"
                         value = {user.avatar}
                         onChangeText = { avatar => setUser({...user, avatar})}
                     />     
                 </CardArea>
-                <CardArea>
-                    <TituloLigth>Dados Residenciais:</TituloLigth>
-                    <Input 
-                        placeholder = "Cep"
-                        value = {user.cep}
-                        onChangeText = { cep => 
-                            setUser({...user, cep})
-                        }
-                        keyboardType = {"numeric"}
-                    />
-                    <Input 
-                        placeholder = "Rua"
-                        value = {user.street}
-                        onChangeText = { street => 
-                            setUser({...user, street})
-                        }
-                    />
-                    <Input
-                        placeholder = "Numero"
-                        value = {user.number}
-                        onChangeText = { number => 
-                            setUser({...user, number})
-                        }
-                        keyboardType = {"numeric"}
-                    />
-                    <Input
-                        placeholder = "Bairro"
-                        value = {user.district}
-                        onChangeText = { district => 
-                            setUser({...user, district})
-                        }
-                        
-                    />
-                    <Input
-                        placeholder = "Cidade"
-                        value = {user.city}
-                        onChangeText = { city => 
-                            setUser({...user, city})
-                        }
-                    />
-                    <Input
-                        placeholder = "Estado"
-                        value = {user.state}
-                        onChangeText = { state => 
-                            setUser({...user, state})
-                        }
-                        maxLength = {2}
-                    /> 
-                </CardArea>
+                
+                <AreaCards>
+                    <Cards IconSvg = {Redo} text ="Dados residenciais"/>
+                    <Cards IconSvg = {Redo} text ="Senha"/>
+                </AreaCards>
+
                 <CustomButton onPress = {handleRegisterClick}>
                     <CustomButtonText >
                         Salvar
@@ -188,3 +161,29 @@ export default ({navigation, route}) => {
         </Container>
     )
 }
+
+const styles = StyleSheet.create({
+    containerMask : {
+        flex: 1,
+        flexDirection: 'row',
+      },
+    inputMask: {
+        height: 55,
+        width: '100%',
+        padding: 10,
+        fontSize: 14,
+        borderRadius: 8,
+        borderColor: "#3F3D56",
+        borderWidth: 1,
+        borderStyle: "solid",
+        alignSelf: "flex-start",
+        fontFamily: 'Poppins-Regular',
+        color: "#3F3D56",
+    },
+    errorMessage: {
+        alignSelf: "flex-start",
+        marginLeft: 15,
+        color: "#f00",
+        fontSize: 12
+    }
+})

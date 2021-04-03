@@ -8,6 +8,22 @@ export const Container = styled.SafeAreaView`
     justify-content: flex-start; 
 `;
 
+export const Header = styled.TouchableOpacity`
+    margin-top: 15px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: row;
+    width: 30%;
+`;
+
+export const TituloHeader = styled.Text`
+    font-family: 'Poppins-Bold';
+    font-size: 22px;
+    color: #6A6180;
+    margin-bottom:20px;
+    margin-left: 10px;
+`;
+
 export const Titulo = styled.Text`
     font-size: 24px;
     font-family: 'Poppins-Bold';

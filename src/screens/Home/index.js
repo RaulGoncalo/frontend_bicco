@@ -11,6 +11,8 @@ import {
     ScrollerHorizontal,
     AreaScroller,
     AvatarArea,
+    Header,
+    TituloHeader,
 } from './styles';
 
 import EditProfile from '../../assets/fi-rr-edit.svg';
@@ -20,14 +22,16 @@ import AppsAdd from '../../assets/fi-rr-apps-add.svg';
 import DataBase from '../../assets/fi-rr-database.svg';
 import Users from '../../assets/fi-rr-users.svg';
 import AccontProfile from '../../assets/fi-rr-user.svg';
+import IconExit from '../../assets/fi-rr-sign-out.svg';
+import AsyncStorage from '@react-native-community/async-storage';
 
-
-import Cards from '../../components/Cards'
+import Cards from '../../components/Cards';
 import  TextHome  from '../../components/TextHome';
 import StatusBar from '../../components/StatusBar';
 
 import { UserContext } from '../../contexts/UserContext';
 import Api from '../../Api'
+import { Alert } from 'react-native';
 
 export default ({navigation}) => {
 
@@ -50,10 +54,30 @@ export default ({navigation}) => {
     }, [])
 
 
+    const exit = () => {
+        Alert.alert("Sair?", "Deseja realmente sair?", 
+        [
+            {
+                text: "Cancel",
+                style: "cancel"
+              },
+              { text: "OK", onPress: async () => {
+                await AsyncStorage.removeItem('token');
+                navigation.reset({
+                    routes: [{name: 'Preload'}]
+                })
+              } }
+        ]);
+    }
+
     return(
         <Container>
             <StatusBar/>
-            
+            <Header onPress = {exit}>
+                <TituloHeader>Sair</TituloHeader>
+                <IconExit width = "20" height = "20px" fill = "#6A6180"/>
+            </Header>
+
             <TextArea>
                 <TextHome texto = "Meu Perfil"/>
             </TextArea>

@@ -109,7 +109,7 @@ export default () => {
         <Container>
             <StatusBar/>
             <Header onPress = {() => navigation.navigate('SignIn')}>
-                    <IconExit width = "30" height = "30px" fill = "#6A6180"/>
+                    <IconExit width = "20" height = "20px" fill = "#6A6180"/>
                     <TituloHeader>Voltar</TituloHeader>
             </Header>
             <InputArea>
