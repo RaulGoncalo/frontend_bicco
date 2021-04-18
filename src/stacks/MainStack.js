@@ -16,9 +16,9 @@ const Stack = createStackNavigator();
 export default () => {
     return(
         <Stack.Navigator
-            initialRouteName = "Preload" >
-            <Stack.Screen name = "Preload"  
-                component = {Preload} 
+            initialRouteName = "AddBicco" >
+            <Stack.Screen name = "AddBicco"  
+                component = {AddBicco} 
                 options = {{headerShown : false}} 
             />
 
@@ -80,7 +80,7 @@ export default () => {
                 component = {RegisterAddress}
             />
 
-            <Stack.Screen 
+            {/*<Stack.Screen 
                 name = "AddBicco" 
                 options = {
                     {
@@ -88,7 +88,7 @@ export default () => {
                     }
                 } 
                 component = {AddBicco}
-            />
+            />*/}
 
         </Stack.Navigator>        
     );

@@ -38,7 +38,7 @@ export const CardHome = styled.View`
     padding: 10px;
     justify-content: space-between;
     align-items: center;
-    border-radius: 20px;
+    border-radius: 8px;
 `;
 
 export const Avatar = styled.Image`
@@ -93,5 +93,4 @@ export const AvatarArea = styled.TouchableOpacity`
     border-radius:20px;
     border: 2px;
     border-color: #6A6180;
-    border
 `;

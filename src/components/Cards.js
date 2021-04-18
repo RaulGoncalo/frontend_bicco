@@ -8,7 +8,7 @@ const Area = styled.TouchableOpacity`
     height : 120px;
     justify-content: space-between;
     align-items: flex-start;
-    border-radius: 20px;
+    border-radius: 8px;
     padding: 15px;
     margin-right: 10px;
 `;

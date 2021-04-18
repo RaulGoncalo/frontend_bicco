@@ -26,7 +26,7 @@ export const TituloLigth = styled.Text`
 export const CardArea = styled.View`
     background-color: #fff;
     width: 100%;
-    border-radius: 20px;
+    border-radius: 8px;
     padding: 12px;
     margin-top: 10px;
     margin-bottom: 15px;
@@ -76,16 +76,9 @@ export const LoadingIcon = styled.ActivityIndicator`
 `;
 
 export const AreaCards = styled.View`
-<<<<<<< HEAD:src/screens/DataPersonal/styles.js
     flex:1;
     width: 100%;
     justify-content: center;
     align-items: center;
-=======
-    width: 100%;
-    justify-content: space-between;
-    align-items: center;
-    padding-left: 20px;
-    padding-right: 20px;
->>>>>>> 2be06eb071dbee07f3e561e4011084a756eb747c:src/screens/CompleteRegister/styles.js
+    margin-bottom: 15px;
 `;

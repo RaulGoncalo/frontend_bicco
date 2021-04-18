@@ -6,10 +6,7 @@ export const Container = styled.SafeAreaView`
     flex: 1;
     padding-left: 20px;
     padding-right: 20px;
-<<<<<<< HEAD
     background-color: #E5E5E5;
-=======
->>>>>>> 2be06eb071dbee07f3e561e4011084a756eb747c
 `;
 export const Titulo = styled.Text`
     font-family: 'Poppins-Bold';
@@ -28,7 +25,7 @@ export const TituloLigth = styled.Text`
 export const CardArea = styled.View`
     background-color: #fff;
     width: 100%;
-    border-radius: 20px;
+    border-radius: 8px;
     padding: 12px;
     margin-top: 10px;
     margin-bottom: 15px;
@@ -39,7 +36,7 @@ export const Scroller = styled.ScrollView`
 export const CustomButton = styled.TouchableOpacity`
     height: 55px;
     background-color: #1C92FF;
-    border-radius: 8px;
+    border-radius: 4px;
     justify-content: center;
     align-items : center;
     width: 100%;
@@ -72,8 +69,6 @@ export const LoadingIcon = styled.ActivityIndicator`
     margin-top: 50px;
 `;
 
-<<<<<<< HEAD
-=======
 export const AreaCards = styled.View`
     width: 100%;
     justify-content: space-between;
@@ -81,4 +76,3 @@ export const AreaCards = styled.View`
     padding-left: 20px;
     padding-right: 20px;
 `;
->>>>>>> 2be06eb071dbee07f3e561e4011084a756eb747c

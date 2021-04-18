@@ -38,10 +38,18 @@ export default ({navigation}) => {
     const {state : user} = useContext(UserContext);
     const [userComplete, setUserComplete] = useState()
 
+      function abrevia(str) {
+        const nome = str.replace(/\s(de|da|dos|das)\s/g, ' ')
+            .trim();
+
+        return nome.split(' ')
+            .map((parte, index) => (index == 0 || index == 1) ? parte : `${parte[0]}.` )
+            .join(' ');
+    }
+
     useEffect(() => {
         const getUserInfo = async () => {
             let res = await Api.getUser();
-            console.log(res)
             if(!res.error){
                 setUserComplete(res)
             }else{
@@ -91,7 +99,7 @@ export default ({navigation}) => {
                 </AvatarArea>               
                 
                 <InfoArea>
-                    <UserName>{user.name}</UserName>
+                    <UserName>{abrevia(user.name)}</UserName>
                     <UserEmail>{user.email}</UserEmail>
                 </InfoArea>
 

@@ -72,7 +72,7 @@ export default ({navigation, route}) => {
             if(user.name == '')
                 setErrorName("Preencha seu nome")
             if(!validateEmail(user.email))
-            setErrorEmail("Digite um email válido")
+                setErrorEmail("Digite um email válido")
             if(!dateField.isValid())
                 setErrorDate("Digite uma data válida")
             if(!phoneField.isValid())
@@ -95,7 +95,7 @@ export default ({navigation, route}) => {
                     </Header>
                 </AreaHeader>
                 {
-                    user.avatar == null ? <Titulo>Finalize seu cadastro:</Titulo> : <Titulo>Altere seus dados:</Titulo>
+                    user.date == null ? <Titulo>Finalize seu cadastro:</Titulo> : <Titulo>Altere seus dados:</Titulo>
                 }
                 <CardArea>
                     <TituloLigth>Dados Pessoais:</TituloLigth>
@@ -127,7 +127,6 @@ export default ({navigation, route}) => {
                             format: 'DD/MM/YYYY'
                         }}
                         value = {user.date}
-<<<<<<< HEAD:src/screens/DataPersonal/index.js
                         onChangeText = { date => {
                             setUser({...user, date})
                             setErrorDate(null)
@@ -136,13 +135,6 @@ export default ({navigation, route}) => {
                         ref = {(ref) => dateField = ref}
                     />
                     <Text style={styles.errorMessage}>{errorDate}</Text>
-=======
-                        onChangeText = { date => setUser({...user, date})}
-                        style={styles.inputMask}
-                    />
-                    <Text style={styles.errorMessage}></Text>
->>>>>>> 2be06eb071dbee07f3e561e4011084a756eb747c:src/screens/CompleteRegister/index.js
-                    
                     <TextInputMask
                         type={'cel-phone'}
                         options={{
@@ -151,7 +143,6 @@ export default ({navigation, route}) => {
                             dddMask: '(99) '
                         }}
                         value={user.phone}
-<<<<<<< HEAD:src/screens/DataPersonal/index.js
                         onChangeText = { phone => {
                             setUser({...user, phone})
                             setErrorPhone(null)
@@ -163,32 +154,12 @@ export default ({navigation, route}) => {
                     />
                     <Text style={styles.errorMessage}>{errorPhone}</Text>    
                 </CardArea>
-                <TituloLigth>Atualize também:</TituloLigth>     
-                <AreaCards>
-                    <Cards IconSvg = {Redo} text ="Dados residenciais" route = 'RegisterAddress'/>
-                    <Cards IconSvg = {Redo} text ="Senha" route = 'ResetePassword'/>
-                </AreaCards>
-=======
-                        onChangeText = { phone => setUser({...user, phone})}
-                        placeholder = {"Telefone com DDD"}
-                        placeholderTextColor = '#9C98A6'
-                        style={styles.inputMask}
-                    />
-                    <Text style={styles.errorMessage}></Text>
-
-                    <Input
-                        placeholder = "URL do Perfil"
-                        value = {user.avatar}
-                        onChangeText = { avatar => setUser({...user, avatar})}
-                    />     
-                </CardArea>
                 
+                <TituloLigth>Preencha também:</TituloLigth>     
                 <AreaCards>
-                    <Cards IconSvg = {Redo} text ="Dados residenciais"/>
-                    <Cards IconSvg = {Redo} text ="Senha"/>
+                    <Cards IconSvg = {Redo} text ="Dados residenciais" route = 'RegisterAddress' parms = {user}/>
+                    <Cards IconSvg = {Redo} text ="Senha" route = 'ResetePassword' parms = {user}/>
                 </AreaCards>
-
->>>>>>> 2be06eb071dbee07f3e561e4011084a756eb747c:src/screens/CompleteRegister/index.js
                 <CustomButton onPress = {handleRegisterClick}>
                         <CustomButtonText >
                             Salvar
@@ -199,10 +170,6 @@ export default ({navigation, route}) => {
 }
 
 const styles = StyleSheet.create({
-    containerMask : {
-        flex: 1,
-        flexDirection: 'row',
-      },
     inputMask: {
         height: 55,
         width: '100%',
@@ -218,16 +185,13 @@ const styles = StyleSheet.create({
     },
     errorMessage: {
         alignSelf: "flex-start",
-<<<<<<< HEAD:src/screens/DataPersonal/index.js
         marginLeft: 10,
         color: "red",
         fontSize: 10,
         fontFamily: "Poppins-Regular",
         marginBottom: 5,
-=======
         marginLeft: 15,
         color: "#f00",
         fontSize: 12
->>>>>>> 2be06eb071dbee07f3e561e4011084a756eb747c:src/screens/CompleteRegister/index.js
     }
 })

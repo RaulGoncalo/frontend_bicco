@@ -10,7 +10,7 @@ const Area = styled.View`
     background-color: #fff;
     width: 100%;
     justify-content: space-between;
-    border-radius: 20px;
+    border-radius: 8px;
     padding: 12px;
     margin-bottom: 20px;
 `;

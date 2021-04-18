@@ -9,7 +9,7 @@ const Area = styled.TouchableOpacity`
     height : 50px;
     justify-content: space-between;
     align-items: center;
-    border-radius: 10px;
+    border-radius: 4px;
     padding-left: 20px;
     padding-right: 20px;
     margin-bottom: 10px;
@@ -22,10 +22,10 @@ const TextCard = styled.Text`
     margin-right: 20px;
 `;
 
-export default ({IconSvg, text, route}) => {
+export default ({IconSvg, text, route, parms}) => {
     const navigation = useNavigation();
     return(
-        <Area onPress = {() => navigation.navigate(route)}>
+        <Area onPress = {() => navigation.navigate(route, {parms})}>
             <TextCard>{text}</TextCard>
             <IconSvg width = {20} height = {20} fill = "#6A6180"/>
         </Area>

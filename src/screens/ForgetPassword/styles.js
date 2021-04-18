@@ -24,21 +24,6 @@ export const TituloHeader = styled.Text`
     margin-left: 10px;
 `;
 
-export const Header = styled.TouchableOpacity`
-    justify-content: flex-start;
-    align-items: flex-start;
-    flex-direction: row;
-    width: 30%;
-`;
-
-export const TituloHeader = styled.Text`
-    font-family: 'Poppins-Bold';
-    font-size: 20px;
-    color: #6A6180;
-    margin-bottom:20px;
-    margin-left: 10px;
-`;
-
 export const SubTitulo = styled.Text`
     font-family: 'Poppins-Regular';
     font-size: 20px;

@@ -24,7 +24,7 @@ export const TituloLigth = styled.Text`
 export const CardArea = styled.View`
     background-color: #fff;
     width: 100%;
-    border-radius: 20px;
+    border-radius: 8px;
     padding: 12px;
     margin-top: 10px;
     margin-bottom: 15px;

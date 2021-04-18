@@ -18,7 +18,8 @@ import Api from '../../Api';
 import {Alert} from 'react-native';
 
 
-export default ({navigation}) => {
+export default ({navigation, route}) => {
+    const [email, setEmail] = useState(route.params.parms.email)
 
     const [newPassword, setNewPassWord] = useState('');
     const [confirmatioNewPassword, setConfirmationNewPassWord] = useState('');
@@ -31,8 +32,9 @@ export default ({navigation}) => {
             setErrorNewPassWord(null)
             setErrorConfirmationNewPassWord(null)
             if(newPassword == confirmatioNewPassword){
-                if(validatePassWord()){
-                    res = await Api.updatePassword(newPassword)
+                if(validatePassWord(newPassword)){
+                    console.log(newPassword, email)
+                    res = await Api.updatePassword(newPassword, email)
                     if(res.success){
                         Alert.alert("Sucesso", "Senha atualizada", [{
                             text : "Ok"
@@ -48,11 +50,17 @@ export default ({navigation}) => {
                     }
                     
                 }else{
-                    setErrorNewPassWord("A senha deve conter pelo menos 1 letra minúscula, 1 letra maiúscula, 1 número e 1 caractere especial")
+                    setErrorNewPassWord("Defina uma senha válida")
                 }
             }else{
                 setErrorConfirmationNewPassWord("Defina a mesma senha")
             }
+        }else{
+            if(newPassword =="")
+                setErrorNewPassWord("Digite a senha")
+            
+            if(confirmatioNewPassword == "")
+                setErrorConfirmationNewPassWord("Confirme a senha")
         }
     }
 
@@ -60,6 +68,8 @@ export default ({navigation}) => {
         const re = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
         return re.test(String(password));
     }
+
+    
     return(
         <Container>
             <Scroller vertical={true} showsVerticalScrollIndicator= {false}>
