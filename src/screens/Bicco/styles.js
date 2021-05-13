@@ -7,26 +7,37 @@ export const Container = styled.SafeAreaView`
     padding-left: 20px;
     padding-right: 20px;
     background-color: #E5E5E5;
+    justify-content: flex-start;
+    align-items: flex-start;
 `;
 
 export const TextArea = styled.View`
     justify-content: flex-start;
     align-items: flex-start;
     margin-top:20px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     padding-left:20px;
 
 `;
 
+export const IconLoading = styled.ActivityIndicator`
+    margin-top: 20px;
+    margin-bottom: 20px;
+`;
+
 export const AreaCards = styled.View`
-    flex:1;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: flex-start;
+`;
+
+export const AreaScroller = styled.View`
+    flex: 1;
     width: 100%;
     justify-content: center;
     align-items: center;
 `;
 
-export const AreaScroller = styled.View`
-    justify-content: center;
-    align-items: center;
+export const ListBicco = styled.FlatList`
+
 `;
-export const Scroller = styled.ScrollView``;

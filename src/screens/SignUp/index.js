@@ -56,19 +56,11 @@ export default () => {
                                         avatar: res.data.avatar
                                     }
                                 });
-                                Alert.alert("Sucesso: Usuário cadastrado", "Faça Login", [{
-                                    text : "Ok"
-                                }]);
-                                navigation.reset({
-                                    routes: [{name: 'SignIn'}]
-                                });
+                                Alert.alert("Sucesso", "Faça Login", [
+                                    { text : "Ok", onPress : () => navigation.navigate('SignIn')}]);
                             }else{
-                                Alert.alert("Erro", res.error, [{
-                                    text : "Ok"
-                                }])
-                                navigation.reset({
-                                    routes: [{name: 'SignIn'}]
-                                })
+                                Alert.alert("Erro", res.error, [
+                                    { text : "Ok", onPress : () => navigation.navigate('SignIn')}]);
                             }
                         }else{
                             setErrorConfirmationPassWord("Defina a mesma senha")
@@ -109,7 +101,7 @@ export default () => {
         <Container>
             <StatusBar/>
             <Header onPress = {() => navigation.navigate('SignIn')}>
-                    <IconExit width = "20" height = "20px" fill = "#6A6180"/>
+                    <IconExit width = "30" height = "30px" fill = "#6A6180"/>
                     <TituloHeader>Voltar</TituloHeader>
             </Header>
             <InputArea>

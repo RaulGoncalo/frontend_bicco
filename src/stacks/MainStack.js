@@ -1,5 +1,5 @@
 import React from 'react';
-import { createStackNavigator, HeaderTitle } from '@react-navigation/stack';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import Preload from '../screens/Preload';
 import SignIn from '../screens/SignIn';
@@ -10,15 +10,16 @@ import RegisterAddress from '../screens/DataAddress';
 import ResetePassword from '../screens/ResetPassword';
 import AddBicco from '../screens/AddBicco'; 
 import MainTab from '../stacks/MainTab';
+import BiccorEdit from '../screens/BiccorEdit';
 
 const Stack = createStackNavigator();
 
 export default () => {
     return(
         <Stack.Navigator
-            initialRouteName = "AddBicco" >
-            <Stack.Screen name = "AddBicco"  
-                component = {AddBicco} 
+            initialRouteName = "Preload" >
+            <Stack.Screen name = "Preload"  
+                component = {Preload} 
                 options = {{headerShown : false}} 
             />
 
@@ -40,7 +41,7 @@ export default () => {
                 component = {Forget}
             />
             
-            <Stack.Screen 
+          <Stack.Screen 
                 name = "MainTab" 
                 component = {MainTab}
                 options = {
@@ -80,7 +81,7 @@ export default () => {
                 component = {RegisterAddress}
             />
 
-            {/*<Stack.Screen 
+            <Stack.Screen 
                 name = "AddBicco" 
                 options = {
                     {
@@ -88,7 +89,17 @@ export default () => {
                     }
                 } 
                 component = {AddBicco}
-            />*/}
+            />
+             <Stack.Screen 
+                name = "BiccorEdit" 
+                mode = 'modal'
+                options = {
+                    {
+                        headerShown : false,
+                    }
+                } 
+                component = {BiccorEdit}
+            />
 
         </Stack.Navigator>        
     );

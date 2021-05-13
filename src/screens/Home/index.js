@@ -13,6 +13,7 @@ import {
     AvatarArea,
     Header,
     TituloHeader,
+    Card,
 } from './styles';
 
 import EditProfile from '../../assets/fi-rr-edit.svg';
@@ -53,10 +54,8 @@ export default ({navigation}) => {
             if(!res.error){
                 setUserComplete(res)
             }else{
-                alert("Erro ao buscar as informações" )
-                navigation.reset({
-                    routes: [{name: 'Home'}]
-                })
+                Alert.alert("Erro ao buscar as informações", [
+                    { text : "Ok", onPress : () => navigation.navigate('Home')}]);
             }
         }
         getUserInfo();
@@ -84,47 +83,48 @@ export default ({navigation}) => {
             <StatusBar/>
             <Header onPress = {exit}>
                 <TituloHeader>Sair</TituloHeader>
-                <IconExit width = "20" height = "20px" fill = "#6A6180"/>
+                <IconExit width = "20" height = "20px" fill = "#fff"/>
             </Header>
+            <Card>
+                <TextArea>
+                    <TextHome texto = "Meu Perfil"/>
+                </TextArea>
 
-            <TextArea>
-                <TextHome texto = "Meu Perfil"/>
-            </TextArea>
+                <CardHome>
+                    <AvatarArea>
+                        {
+                            user.avatar != null ? <Avatar/> : <AccontProfile width = "40" height = "40" fill = "#6A6180"/>
+                        }
+                    </AvatarArea>               
+                    
+                    <InfoArea>
+                        <UserName>{abrevia(user.name)}</UserName>
+                        <UserEmail>{user.email}</UserEmail>
+                    </InfoArea>
 
-            <CardHome>
-                <AvatarArea>
-                    {
-                        user.avatar != null ? <Avatar/> : <AccontProfile width = "40" height = "40" fill = "#6A6180"/>
-                    }
-                </AvatarArea>               
-                
-                <InfoArea>
-                    <UserName>{abrevia(user.name)}</UserName>
-                    <UserEmail>{user.email}</UserEmail>
-                </InfoArea>
+                    <AreaIcon onPress = {() => navigation.navigate('Register', userComplete)}>
+                            <EditProfile width = "20" height = "20px" fill = "#6A6180"/>
+                    </AreaIcon>
+                </CardHome>
 
-                <AreaIcon onPress = {() => navigation.navigate('Register', userComplete)}>
-                        <EditProfile width = "20" height = "20px" fill = "#6A6180"/>
-                </AreaIcon>
-            </CardHome>
+                <TextArea>
+                    <TextHome texto = "O que deseja fazer?"/>
+                </TextArea>
 
-            <TextArea>
-                <TextHome texto = "O que deseja fazer?"/>
-            </TextArea>
+                <AreaScroller>
+                    <ScrollerHorizontal  horizontal={true} showsHorizontalScrollIndicator= {false}>
+                        <Cards IconSvg = {Search} text ="Quero Contratar" route = 'Search'/>
+                        <Cards IconSvg = {Apps} text ="Meus Biccos" route = 'Bicco'/>
+                        <Cards IconSvg = {AppsAdd} text ="Adicionar Bicco"  route = 'AddBicco'/>
+                        <Cards IconSvg = {DataBase} text ="Meus Dados" route = 'Register' user = {userComplete}/>
+                        <Cards IconSvg = {Users} text ="Meus Contatos"  route = 'Negotiation'/>
+                    </ScrollerHorizontal>
+                </AreaScroller>
 
-            <AreaScroller>
-                <ScrollerHorizontal  horizontal={true} showsHorizontalScrollIndicator= {false}>
-                    <Cards IconSvg = {Search} text ="Quero Contratar" route = 'Search'/>
-                    <Cards IconSvg = {Apps} text ="Meus Biccos" route = 'Bicco'/>
-                    <Cards IconSvg = {AppsAdd} text ="Adicionar Bicco"  route = 'AddBicco'/>
-                    <Cards IconSvg = {DataBase} text ="Meus Dados" route = 'Register' user = {userComplete}/>
-                    <Cards IconSvg = {Users} text ="Meus Contatos"  route = 'Negotiation'/>
-                </ScrollerHorizontal>
-            </AreaScroller>
-
-            <TextArea>
-                <TextHome texto = "Anúnciados recentemente:"/>
-            </TextArea>
+                <TextArea>
+                    <TextHome texto = "Anúnciados recentemente:"/>
+                </TextArea>
+            </Card>
         </Container>
     )
 }

@@ -5,7 +5,7 @@ export const Header = styled.TouchableOpacity`
     justify-content: flex-end;
     align-items: center;
     flex-direction: row;
-    width: 100%;
+    margin: 20px;
 `;
 
 export const TituloHeader = styled.Text`
@@ -14,14 +14,13 @@ export const TituloHeader = styled.Text`
     align-items: center;
     font-family: 'Poppins-Bold';
     font-size: 20px;
-    color: #6A6180;
+    color: #fff;
     margin-right: 15px;
 `;
 
 export const Container = styled.SafeAreaView`
     flex: 1;
-    padding: 20px;
-    background-color: #E5E5E5;
+    background-color: #1C92FF;
 `;
 
 export const TextArea = styled.View`
@@ -93,4 +92,12 @@ export const AvatarArea = styled.TouchableOpacity`
     border-radius:20px;
     border: 2px;
     border-color: #6A6180;
+`;
+
+export const Card = styled.View`
+    flex-grow: 8;
+    padding: 20px;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    background-color: #E5E5E5;
 `;

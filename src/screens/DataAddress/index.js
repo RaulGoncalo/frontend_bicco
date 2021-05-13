@@ -30,7 +30,6 @@ export default ({navigation, route}) => {
     const [errorNumber, setErrorNumber] = useState('');
     
     const handleRegisterClick = async () => {
-        console.log(user)
         setErrorCep(null)
         setErrorStreet(null)
         setErrorCity(null)
@@ -39,18 +38,11 @@ export default ({navigation, route}) => {
            console.log(user)
                 let res = await Api.register(user)
                 if(res.success){
-                    Alert.alert("Sucesso", "Endereço cadastrado", [{
-                        text : "Ok"
-                    }]);
-    
-                    navigation.reset({
-                        routes: [{name: 'Home'}]
-                    })
+                    Alert.alert("Sucesso", "Endereço cadastrado", [
+                        { text : "Ok", onPress : () => navigation.navigate('Home')}]);
                 }else{
-                    alert("Erro:" + res.error)
-                    navigation.reset({
-                        routes: [{name: 'Home'}]
-                    })
+                    Alert.alert("Erro", res.error, [
+                        { text : "Ok", onPress : () => navigation.navigate('Home')}]);
                 } 
         }else{
             if(user.cep == '')

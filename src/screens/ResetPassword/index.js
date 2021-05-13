@@ -36,17 +36,11 @@ export default ({navigation, route}) => {
                     console.log(newPassword, email)
                     res = await Api.updatePassword(newPassword, email)
                     if(res.success){
-                        Alert.alert("Sucesso", "Senha atualizada", [{
-                            text : "Ok"
-                        }]);
-        
-                        navigation.reset({
-                            routes: [{name: 'Home'}]
-                        })
+                        Alert.alert("Sucesso", "Senha atualizada", [
+                            { text : "Ok", onPress : () => navigation.navigate('Home')}]);
                     }else{
-                        Alert.alert("Error", res.error, [{
-                            text : "Ok"
-                        }]);
+                        Alert.alert("Erro", res.error, [
+                            { text : "Ok", onPress : () => navigation.navigate('Home')}]);
                     }
                     
                 }else{

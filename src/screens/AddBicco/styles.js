@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components/native';
 
 
-export const Container = styled.SafeAreaView`
+export const Container = styled.ScrollView`
     flex: 1;
     padding-left: 20px;
     padding-right: 20px;
@@ -30,8 +30,6 @@ export const CardArea = styled.View`
     margin-top: 10px;
     margin-bottom: 15px;
 `;
-export const Scroller = styled.ScrollView`
-`;
 
 export const CustomButton = styled.TouchableOpacity`
     height: 55px;
@@ -57,6 +55,7 @@ export const TituloHeader = styled.Text`
     margin-bottom:5px;
     margin-left: 10px;
 `;
+
 export const Header = styled.TouchableOpacity`
     margin-top: 20px;
     justify-content: flex-start;
@@ -65,16 +64,56 @@ export const Header = styled.TouchableOpacity`
     width: 30%;
 `;
 
-export const LoadingIcon = styled.ActivityIndicator`
-    margin-top: 50px;
+export const AreaShedules = styled.View`
+    width: 50%;
+    flex-direction: row;
+    background-color: #FAFAFa;
+    height : 50px;
+    justify-content: center;
+    align-items: center;
+`;
+
+export const Hour = styled.Text`
+    font-family: 'Poppins-Bold';
+    font-size: 12px;
+    color: #6A6180;
+    text-align: center;
 `;
 
 
-export const CardSchedules = styled.View`
-    width: 100%;
+export const Shedules = styled.View`
+    flex:1;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
     border-radius: 8px;
-    margin-bottom: 15px;
+    border: 1px;
+    margin-top: 5px;
 `;
 
+export const Money = styled.View`
+    flex:1;
+    width: 40%;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    border-radius: 8px;
+    border: 1px;
+`;
 
+export const AreaPicker = styled.View`
+   
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 8px;
+    border: 1px;
+`;
 
+export const Picker = styled.Picker`
+    width: 100%;
+    height: 55px;
+    color:  #6A6180;
+    font-size: 12px;
+    font-family: 'Poppins-Regular';
+`;

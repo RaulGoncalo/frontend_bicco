@@ -23,6 +23,7 @@ import {Alert, StyleSheet, Text} from 'react-native';
 
 import Cards from '../../components/CardStrained';
 import Redo from '../../assets/fi-rr-redo.svg';
+import AsyncStorage from '@react-native-community/async-storage'
 
 
 export default ({navigation, route}) => {
@@ -44,7 +45,10 @@ export default ({navigation, route}) => {
         setErrorDate(null)
         setErrorPhone(null)
        if(user.name != '' && validateEmail(user.email) && dateField.isValid() && phoneField.isValid()){
-                let res = await Api.register(user)
+            const token = await AsyncStorage.getItem('token');
+
+                let res = await Api.register(user, token)
+                
                 if(res.success){
                     userDispatch({
                         type: 'setUser',
@@ -54,19 +58,11 @@ export default ({navigation, route}) => {
                             avatar: user.avatar
                         }
                     });
-    
-                    Alert.alert("Sucesso", "Usuário cadastrado", [{
-                        text : "Ok"
-                    }]);
-    
-                    navigation.reset({
-                        routes: [{name: 'Home'}]
-                    })
+                    Alert.alert("Sucesso", "Usuário cadastrado com sucesso", [
+                        { text : "Ok", onPress : () => navigation.navigate('Home')}]);
                 }else{
-                    alert("Erro:" + res.error)
-                    navigation.reset({
-                        routes: [{name: 'Home'}]
-                    })
+                    Alert.alert("Erro", res.error, [
+                        { text : "Ok", onPress : () => navigation.navigate('Home')}]);
                 } 
         }else{
             if(user.name == '')

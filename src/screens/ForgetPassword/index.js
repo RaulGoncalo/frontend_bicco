@@ -35,13 +35,8 @@ export default () => {
                         text : "Ok"
                     }]);
                 }else{
-                    Alert.alert("Sucesso:", "E-mail enviado", [{
-                        text : "Ok"
-                    }]);
-
-                    navigation.reset({
-                        routes: [{name: 'SignIn'}]
-                    });
+                    Alert.alert("Sucesso", "Email enviado", [
+                        { text : "Ok", onPress : () => navigation.navigate('SignIn')}]);
                 }
             }else{
                 setErrorEmail("Preencha seu email corretamente")
