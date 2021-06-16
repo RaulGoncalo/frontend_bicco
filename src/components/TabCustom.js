@@ -10,8 +10,6 @@ const TabArea = styled.View`
     height: 60px;
     background-color: #FFF;
     flex-direction: row;
-    border-top-right-radius: 20px;
-    border-top-left-radius: 20px;
 `;
 const TabItem = styled.TouchableOpacity`
     flex: 1;

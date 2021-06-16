@@ -19,7 +19,7 @@ import {Alert} from 'react-native';
 
 
 export default ({navigation, route}) => {
-    const [email, setEmail] = useState(route.params.parms.email)
+    const [email, setEmail] = useState(route.params.data.email)
 
     const [newPassword, setNewPassWord] = useState('');
     const [confirmatioNewPassword, setConfirmationNewPassWord] = useState('');

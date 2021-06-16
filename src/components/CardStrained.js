@@ -22,10 +22,10 @@ const TextCard = styled.Text`
     margin-right: 20px;
 `;
 
-export default ({IconSvg, text, route, parms}) => {
+export default ({IconSvg, text, route, parms, validUser}) => {
     const navigation = useNavigation();
     return(
-        <Area onPress = {() => navigation.navigate(route, {parms})}>
+        <Area onPress = {() => {route != "" ? navigation.navigate(route, parms): validUser()}}>
             <TextCard>{text}</TextCard>
             <IconSvg width = {20} height = {20} fill = "#6A6180"/>
         </Area>

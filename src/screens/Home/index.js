@@ -25,21 +25,22 @@ import Users from '../../assets/fi-rr-users.svg';
 import AccontProfile from '../../assets/fi-rr-user.svg';
 import IconExit from '../../assets/fi-rr-sign-out.svg';
 import AsyncStorage from '@react-native-community/async-storage';
-
+import {launchImageLibrary} from 'react-native-image-picker';
 import Cards from '../../components/Cards';
 import  TextHome  from '../../components/TextHome';
 import StatusBar from '../../components/StatusBar';
-
 import { UserContext } from '../../contexts/UserContext';
 import Api from '../../Api'
-import { Alert } from 'react-native';
+import { Alert, ImagePickerIOS } from 'react-native';
 
 export default ({navigation}) => {
 
+    const {dispatch : userDispatch} = useContext(UserContext);
     const {state : user} = useContext(UserContext);
     const [userComplete, setUserComplete] = useState()
+    const [avatar, setAvatar] = useState()
 
-      function abrevia(str) {
+    function abrevia(str) {
         const nome = str.replace(/\s(de|da|dos|das)\s/g, ' ')
             .trim();
 
@@ -61,7 +62,6 @@ export default ({navigation}) => {
         getUserInfo();
     }, [])
 
-
     const exit = () => {
         Alert.alert("Sair?", "Deseja realmente sair?", 
         [
@@ -72,10 +72,36 @@ export default ({navigation}) => {
               { text: "OK", onPress: async () => {
                 await AsyncStorage.removeItem('token');
                 navigation.reset({
-                    routes: [{name: 'Preload'}]
+                    routes: [{name: 'SignIn'}]
                 })
               } }
         ]);
+    }
+
+    const imagePickerCB = async (data) =>{
+       if(data.didCancel || data.erro || !data.uri){
+           return console.log("Erro ao buscar imagem")
+       }
+
+       userDispatch({
+            type: 'setUser',
+            payload:{
+                name: user.name,
+                email: user.email,
+                avatar: data.uri
+            }
+        });
+
+        
+
+        const photo = new FormData()
+        photo.append('avatar', {
+            fileName: data.fileName,
+            uri: data.uri,
+            type: data.type,
+        })
+    
+
     }
 
     return(
@@ -91,9 +117,10 @@ export default ({navigation}) => {
                 </TextArea>
 
                 <CardHome>
-                    <AvatarArea>
+                    <AvatarArea onPress={() => launchImageLibrary({
+                    }, imagePickerCB)}>
                         {
-                            user.avatar != null ? <Avatar/> : <AccontProfile width = "40" height = "40" fill = "#6A6180"/>
+                            user.avatar ? <Avatar source= {{uri: user.avatar}}/> : <AccontProfile width = "40" height = "40" fill = "#6A6180"/>
                         }
                     </AvatarArea>               
                     
@@ -120,10 +147,6 @@ export default ({navigation}) => {
                         <Cards IconSvg = {Users} text ="Meus Contatos"  route = 'Negotiation'/>
                     </ScrollerHorizontal>
                 </AreaScroller>
-
-                <TextArea>
-                    <TextHome texto = "Anúnciados recentemente:"/>
-                </TextArea>
             </Card>
         </Container>
     )

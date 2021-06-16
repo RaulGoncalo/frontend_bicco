@@ -9,8 +9,8 @@ import Register from '../screens/DataPersonal';
 import RegisterAddress from '../screens/DataAddress';
 import ResetePassword from '../screens/ResetPassword';
 import AddBicco from '../screens/AddBicco'; 
+import Chat from '../screens/Chat'; 
 import MainTab from '../stacks/MainTab';
-import BiccorEdit from '../screens/BiccorEdit';
 
 const Stack = createStackNavigator();
 
@@ -22,7 +22,8 @@ export default () => {
                 component = {Preload} 
                 options = {{headerShown : false}} 
             />
-
+    
+    
             <Stack.Screen 
                 name = "SignIn" 
                 options = {{headerShown : false}} 
@@ -90,17 +91,17 @@ export default () => {
                 } 
                 component = {AddBicco}
             />
-             <Stack.Screen 
-                name = "BiccorEdit" 
-                mode = 'modal'
+
+            <Stack.Screen 
+                name = "Chat" 
                 options = {
                     {
                         headerShown : false,
                     }
                 } 
-                component = {BiccorEdit}
+                component = {Chat}
             />
-
+            
         </Stack.Navigator>        
     );
 } 

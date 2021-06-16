@@ -85,7 +85,7 @@ export default ({navigation, route}) => {
     return(
         <Container vertical={true} showsVerticalScrollIndicator= {false}>
                 <AreaHeader>
-                    <Header onPress = {() => navigation.navigate('Home')}>
+                    <Header onPress = {() => navigation.goBack()}>
                         <IconExit width = "30" height = "30px" fill = "#6A6180"/>
                         <TituloHeader>Voltar</TituloHeader>
                     </Header>

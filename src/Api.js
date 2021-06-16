@@ -1,8 +1,9 @@
 import AsyncStorage from '@react-native-community/async-storage';
 
-const BASE_API = 'http://192.168.0.7:3000';
+const BASE_API = 'http://192.168.0.5:3000';
 
 export default {
+
     checkToken: async(token) => {
         const req = await fetch(`${BASE_API}/refresh`, {
             
@@ -68,7 +69,9 @@ export default {
         return json;
     },
 
-    register: async(user, token) => {
+    register: async(user) => {
+        const token = await AsyncStorage.getItem('token');
+
         const req = await fetch(`${BASE_API}/register`, {
             method: 'POST',
             headers: {
@@ -94,7 +97,8 @@ export default {
         return json;
     },
 
-    registerBicco: async(bicco, token) => {
+    registerBicco: async(bicco) => {
+        const token = await AsyncStorage.getItem('token');
         const req = await fetch(`${BASE_API}/registerBicco`, {
             method: 'POST',
             headers: {
@@ -140,10 +144,34 @@ export default {
         const json = await req.json();
         return json;
     },
-
-    biccos: async() => {
-        const req = await fetch(`${BASE_API}/biccos`);
+    
+    
+    biccos: async(filters) => {
+        const req = await fetch(`${BASE_API}/biccos`, {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-type': 'application/json',
+            },
+            body: JSON.stringify({filters})
+        })
         const json = await req.json();
+        return json;
+    },
+
+    avatar: async(photo) => {
+        const token = await AsyncStorage.getItem('token');
+        const req = await fetch(`${BASE_API}/avatar`, {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-type': 'application/json',
+            },
+            body: JSON.stringify(photo, {token})
+            
+        })
+        const json = await req.json();
+        
         return json;
     },
 }

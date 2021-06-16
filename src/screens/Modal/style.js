@@ -5,7 +5,6 @@ import styled from 'styled-components/native';
 export const Container = styled.SafeAreaView`
     flex: 3.5;
     padding: 20px;
-    background-color: #E5E5E5;
     justify-content: space-between;
 `;
 
@@ -87,10 +86,20 @@ export const ButtonArea = styled.View`
     flex-direction: row;
     padding: 20px;
     width: 100%;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 `;
 
+export const Button = styled.TouchableOpacity`
+    flex-direction: row;
+    padding: 5px;
+    height: 40px;
+    width: 90%;
+    background-color: #1C92FF;
+    border-radius: 8px;
+    justify-content: center;
+    align-items : center;  
+`;
 export const ButtonEdit = styled.TouchableOpacity`
     flex-direction: row;
     padding: 5px;
@@ -99,7 +108,8 @@ export const ButtonEdit = styled.TouchableOpacity`
     background-color: #1C92FF;
     border-radius: 8px;
     justify-content: space-around;
-    align-items : center;  
+    align-items : center;
+    margin-right: 20px;  
 `;
 export const ButtonDelete = styled.TouchableOpacity`
     flex-direction: row;
@@ -113,10 +123,10 @@ export const ButtonDelete = styled.TouchableOpacity`
     
 `;
 export const TextButton = styled.Text`
-    font-size: 20px;
+    font-size: 18px;
     font-family: 'poppins-regular';
     color: #fff;
-    margin-left: 10px;
+    margin-right: 20px;
 `;
 export const Header = styled.TouchableOpacity`
     justify-content: flex-start;

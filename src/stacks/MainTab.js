@@ -1,5 +1,5 @@
 import React from 'react'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
 
 import TabCustom from '../components/TabCustom';
 
@@ -8,11 +8,17 @@ import Bicco from '../screens/Bicco';
 import Search from '../screens/Search';
 import Negotiation from '../screens/Negotiation';
 
-const Tab = createBottomTabNavigator();
+const Tab = createMaterialTopTabNavigator();
 
 export default () => {
     return(
-        <Tab.Navigator tabBar= {props => <TabCustom {...props}/>}>
+        <Tab.Navigator 
+            tabBar= {props => <TabCustom {...props}/>}
+            tabBarPosition  = 'bottom'
+            swipeEnabled = {true}
+            lazy = {false}
+                
+        >
             <Tab.Screen name = 'Home' component = {Home}/>
             <Tab.Screen name = 'Search' component = {Search}/>
             <Tab.Screen name = 'Negotiation' component = {Negotiation}/>

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components/native';
 
 export const Header = styled.TouchableOpacity`
-    justify-content: flex-end;
+    justify-content: flex-start;
     align-items: center;
     flex-direction: row;
     margin: 20px;
@@ -15,7 +15,7 @@ export const TituloHeader = styled.Text`
     font-family: 'Poppins-Bold';
     font-size: 20px;
     color: #fff;
-    margin-right: 15px;
+    margin-right: 20px;
 `;
 
 export const Container = styled.SafeAreaView`
@@ -41,9 +41,9 @@ export const CardHome = styled.View`
 `;
 
 export const Avatar = styled.Image`
-    width: 80px;
-    height: 80px;
-    border-radius: 20px;
+    width: 100px;
+    height: 100px;
+    border-radius: 60px;
 `;
 
 export const InfoArea = styled.View`
@@ -84,20 +84,20 @@ export const LoadingIcon = styled.ActivityIndicator`
 `;
 
 export const AvatarArea = styled.TouchableOpacity`
-    width:85px;
-    height: 85px;
+    width:105px;
+    height: 105px;
     justify-content: center;
     align-items: center;
     margin-right: 10px;
-    border-radius:20px;
-    border: 2px;
+    border-radius:70px;
+    border: 1px;
     border-color: #6A6180;
 `;
 
 export const Card = styled.View`
     flex-grow: 8;
     padding: 20px;
-    border-top-right-radius: 20px;
-    border-top-left-radius: 20px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
     background-color: #E5E5E5;
 `;

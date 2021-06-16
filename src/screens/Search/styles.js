@@ -5,14 +5,12 @@ export const Container = styled.View`
     flex: 1;
     background-color:  #1C92FF;
 `
-export const FlatList = styled.FlatList``;
-
-export const AreaFilter = styled.ScrollView`
+export const AreaFilter = styled.View`
     flex: 1;
     width: 100%;
     border-radius: 10px;
     padding: 15px;
-    margin-bottom: 40px;
+    margin-bottom: 5px;
 `;
 
 export const Titulo = styled.Text`
@@ -90,20 +88,22 @@ export const BottomFilter = styled.View`
     align-items: center;
 `;
 
+export const AreaCard = styled.ScrollView`
+    flex:1;
+    background-color: #E5E5E5;
+`;
+
 export const Card = styled.ScrollView`
-    flex-grow: 8;
+    flex:1;
     padding: 20px;
-    border-top-right-radius: 20px;
-    border-top-left-radius: 20px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
     background-color: #E5E5E5;
 `;
 export const CardHeader = styled.View`
     background-color: #1C92FF;
     justify-content: center;
     align-items: center;
-`;
-export const Scroll = styled.ScrollView`
-    padding: 10px;
 `;
 
 export const Hour = styled.Text`
@@ -131,7 +131,7 @@ export const CustomButton = styled.TouchableOpacity`
     align-items : center;
     width: 100%;
     margin-top: 20px;
-    margin-bottom: 10px;
+    margin-bottom: 50px;
 `;
 
 export const CustomButtonText = styled.Text`
@@ -142,4 +142,13 @@ export const CustomButtonText = styled.Text`
 
 export const IconLoading = styled.ActivityIndicator`
     margin-bottom: 30px;
+`;
+
+export const Divider = styled.View`
+    flex-direction: row;
+    margin-bottom: 30px;
+    background-color: #6A6180;
+    opacity: 0.2;
+    width: 95%;
+    height: 1px;
 `;

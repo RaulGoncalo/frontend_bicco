@@ -17,15 +17,12 @@ export default () => {
         //toda vez que abrir o app ira verificar se tem o token e se é valido
         const checkToken = async () =>{
             const token = await AsyncStorage.getItem('token');
-
             //verifica se tem token 
             if (token != null){
                 //envia o token para verificar com o back
                 let res = await Api.checkToken(token);
-        
-                
                 //recebe um novo token
-                if(!res.error) {
+                if(!res.error && res.data) {
                     //salva o token no AsyncStorage
                     userDispatch({
                         type: 'setUser',

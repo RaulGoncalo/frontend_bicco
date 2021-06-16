@@ -2,13 +2,9 @@ import React from 'react';
 import styled from 'styled-components/native';
 
 
-export const Container = styled.SafeAreaView`
+export const Container = styled.View`
     flex: 1;
-    padding-left: 20px;
-    padding-right: 20px;
-    background-color: #E5E5E5;
-    justify-content: flex-start;
-    align-items: flex-start;
+    background-color:  #1C92FF;
 `;
 
 export const TextArea = styled.View`
@@ -31,13 +27,28 @@ export const AreaCards = styled.View`
     align-items: flex-start;
 `;
 
-export const AreaScroller = styled.View`
+export const AreaScroller = styled.ScrollView`
     flex: 1;
     width: 100%;
+`;
+
+export const CardHeader = styled.View`
+    background-color: #1C92FF;
     justify-content: center;
     align-items: center;
 `;
 
-export const ListBicco = styled.FlatList`
+export const Titulo = styled.Text`
+    font-family: 'Poppins-Bold';
+    font-size: 20px;
+    margin: 20px;
+    color: white;
+`;
 
+export const Card = styled.ScrollView`
+    flex-grow: 8;
+    padding: 20px;
+    background-color: #E5E5E5;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
 `;

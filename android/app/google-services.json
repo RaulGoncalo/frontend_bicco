@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "702707286678",
+    "project_id": "appbicco-af5c7",
+    "storage_bucket": "appbicco-af5c7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:702707286678:android:b22dfb418e80a8302c38b7",
+        "android_client_info": {
+          "package_name": "com.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "702707286678-4d8pr6suh2nc0t5m9ck0a1cod9rg1jjt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8k-4Hsu7kJz7_PwiInMQsAcLg6Xy60nY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "702707286678-4d8pr6suh2nc0t5m9ck0a1cod9rg1jjt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:702707286678:android:0a53dcd5b97888ee2c38b7",
+        "android_client_info": {
+          "package_name": "com.appbicco"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "702707286678-4d8pr6suh2nc0t5m9ck0a1cod9rg1jjt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8k-4Hsu7kJz7_PwiInMQsAcLg6Xy60nY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "702707286678-4d8pr6suh2nc0t5m9ck0a1cod9rg1jjt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

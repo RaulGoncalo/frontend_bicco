@@ -20,8 +20,7 @@ import {Alert, StyleSheet, Text} from 'react-native';
 
 
 export default ({navigation, route}) => {
-    const [user, setUser] = useState(route.params.parms)
-
+    const [user, setUser] = useState(route.params)
     const [errorCep, setErrorCep] = useState('');
     const [errorStreet, setErrorStreet] = useState('');
     const [errorDistrict, setErrorDistrict] = useState('');
@@ -84,7 +83,7 @@ export default ({navigation, route}) => {
     return(
         <Container>
             <Scroller vertical={true} showsVerticalScrollIndicator= {false}>
-                <Header onPress = {() => navigation.navigate('Register')}>
+                <Header onPress = {() => navigation.goBack()}>
                     <IconExit width = "30" height = "30px" fill = "#6A6180"/>
                     <TituloHeader>Voltar</TituloHeader>
 
